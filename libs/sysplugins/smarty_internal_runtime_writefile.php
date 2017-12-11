@@ -28,9 +28,9 @@ class Smarty_Internal_Runtime_WriteFile
     {
         $_error_reporting = error_reporting();
         error_reporting($_error_reporting & ~E_NOTICE & ~E_WARNING);
-        $_file_perms = property_exists($smarty, '_file_perms') ? $smarty->_file_perms : 0644;
+        $_file_perms = property_exists($smarty, '_file_perms') ? $smarty->_file_perms : 0666;
         $_dir_perms =
-            property_exists($smarty, '_dir_perms') ? (isset($smarty->_dir_perms) ? $smarty->_dir_perms : 0777) : 0771;
+            property_exists($smarty, '_dir_perms') ? (isset($smarty->_dir_perms) ? $smarty->_dir_perms : 0777) : 0777;
         if ($_file_perms !== null) {
             $old_umask = umask(0);
         }
